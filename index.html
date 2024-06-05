@@ -54,51 +54,12 @@
         }
     </style>
 </head>
-   <script>
-    function calculatePrice() {
-        const weight = document.getElementById('weight').value;
-        const distance = document.getElementById('distance').value;
-        const method = document.getElementById('method').value;
-        let pricePerKgPerKm;
-
-        switch (method) {
-            case 'sea':
-                pricePerKgPerKm = 12; // 美森限时达快递派每公斤美国的价格
-                break;
-            case 'air':
-               pricePerKgPerKm = 10; // 美森限时达卡派每公斤美国的价格
-                break;
-            case 'air':
-               pricePerKgPerKm = 12; // 美国海运EMC定提限时达海派每公斤美国的价格
-                break;
-            case 'air':
-               pricePerKgPerKm = 12; // 美国海运EMC定提限时达卡派每公斤美国的价格
-                break;
-            case 'air':
-               pricePerKgPerKm = 12; // cosco快船定提海派每公斤美国的价格
-                break;
-            case 'air':
-                 pricePerKgPerKm = 12; // cosco快船定提卡派每公斤美国的价格
-                break;
-            case 'air':
-                 pricePerKgPerKm = 12; // 美国休斯敦航线每公斤美国的价格
-                break;
-            case 'air':
-                pricePerKgPerKm = 0.2; // 美国空运每公斤每公里的价格
-                break;
-            case 'land':
-                pricePerKgPerKm = 0.1; // 欧洲空运每公斤每公里的价格
-                break;
-        }
-
-        const price = weight * distance * pricePerKgPerKm;
-        document.getElementById('price').innerText = `预计价格: $${price.toFixed(2)}`;
-    }
-</script> 
 <body>
     <header>
         <h1>深圳市康晟达国际物流有限公司</h1>
-        <p>康晟达专注于为从中国出口到美国、欧洲、英国、加拿大、日本等国的贸易公司、工厂、亚马逊卖家等提供专业的物流供应链服务。我们的服务涵盖DDU（未付税前交货）和DDP（已付税前交货）等方案，确保货物的无缝运输和交付，优化整个运输流程，为尊贵的客户提供全面的解决方案。凭借在行业中的卓越承诺和专业知识，我们为客户提供可靠高效的物流服务，使企业能够自信轻松地进入国际市场。</p >
+        <p>康晟达专注于为从中国出口到美国、欧洲、英国、加拿大、日本等国的贸易公司、工厂、亚马逊卖家等提供专业的物流供应链服务。
+            我们的服务涵盖DDU（未付税前交货）和DDP（已付税前交货）等方案，确保货物的无缝运输和交付，优化整个运输流程，
+            为尊贵的客户提供全面的解决方案。凭借在行业中的卓越承诺和专业知识，我们为客户提供可靠高效的物流服务，使企业能够自信轻松地进入国际市场</p >
     </header>
     <nav>
         服务介绍
@@ -110,42 +71,53 @@
     <section id="services" class="container">
         <h2>服务介绍</h2>
         <h3>海运</h3>
-        <p>我们提供高效且可靠的海运服务，适用于大宗货物的跨国运输。我们海运服务覆盖全球多个主要港口，确保你的货物能否安全准时到达目的地</p >
+        <p>提供快速可靠的海运服务。</p >
         <h3>空运</h3>
         <p>快速的空运服务，适合紧急运输需求。</p >
         <h3>陆运</h3>
         <p>覆盖广泛的陆运服务，适用于短途和长途运输。</p >
     </section>
     <section id="calculator" class="container">
-    <h2>价格计算</h2>
-    <form>
-        <label for="weight">货物重量 (kg):</label>
-        <input type="number" id="weight" name="weight" required>
-        <label for="destination">目的地国家:</label>
-        <select id="destination" name="destination" required>
-             <option value="sea">美国</option>
-             <option value="sea">德国</option>
-             <option value="sea">法国</option>
-             <option value="sea">西班牙</option>
-             <option value="sea">加拿大</option>
-             <option value="sea">日本</option>
-             <option value="sea">英国</option>
-            <input type="number" id="distance" name="distance" required>
+        <h2>价格计算</h2>
+        <form>
+            <label for="weight">货物重量 (kg):</label>
+            <input type="number" id="weight" name="weight" required>
+            <label for="destination">目的地国家:</label>
+            <select id="destination" name="destination" required>
+                <option value="usa">美国</option>
+                <option value="germany">德国</option>
+                <option value="france">法国</option>
+                <option value="spain">西班牙</option>
+                <option value="canada">加拿大</option>
+                <option value="japan">日本</option>
+                <option value="uk">英国</option>
+            </select>
+            <label for="warehouse">仓库:</label>
+            <select id="warehouse" name="warehouse" required>
+                <option value="warehouse1">ONT8</option>
+                <option value="warehouse2">LGB8</option>
+                <option value="warehouse3">LAX9</option>
+                  <option value="warehouse4">DTM2</option>
+                  <option value="warehouse5">BHX4</option>
+                  <option value="warehouse6">YOW3</option>
+                  <option value="warehouse7">BGK1</option>
+                
+            </select>
             <label for="method">运输方式:</label>
             <select id="method" name="method" required>
-                <option value="sea">美森限时达快递派</option>
-                <option value="air">美森限时达卡派</option>
-                <option value="land">美国海运EMC定提限时达海派</option>
-                 <option value="land">美国海运EMC定提限时达卡派</option>
-                 <option value="land">cosco快船定提海派</option>
-                 <option value="land">cosco快船定提卡派</option>
-                 <option value="land">美国休斯敦航线</option>
-                <option value="land">美国空运</option>
-                <option value="land">欧洲空运</option>
-                <option value="land">英国海运包税</option>
-                <option value="land">英国海运不包税</option>
-                 <option value="land">日本海运固定税率</option>
-                 <option value="land">日本海运不包税逆算</option>
+                <option value="matson">美森限时达快递派</option>
+                <option value="matson_card">美森限时达卡派</option>
+                <option value="emc_sea">美国海运EMC定提限时达海派</option>
+                <option value="emc_card">美国海运EMC定提限时达卡派</option>
+                <option value="cosco_sea">cosco快船定提海派</option>
+                <option value="cosco_card">cosco快船定提卡派</option>
+                <option value="houston">美国休斯敦航线</option>
+                <option value="usa_air">美国空运</option>
+                <option value="europe_air">欧洲空运</option>
+                <option value="uk_tax_included">英国海运包税</option>
+                <option value="uk_tax_not_included">英国海运不包税</option>
+                <option value="japan_fixed_tax">日本海运固定税率</option>
+                <option value="japan_tax_not_included">日本海运不包税逆算</option>
             </select>
             <button type="button" onclick="calculatePrice()">计算价格</button>
         </form>
@@ -180,79 +152,338 @@
         </form>
     </section>
     <section id="contact" class="container">
-        <h2>联系我们</h2>
+          <h2>联系我们</h2>
         <p>电子邮件: 18218209484@163.com</p >
         <p>电话: +8618218209484</p >
         <p>地址: 深圳市龙岗区坂田街道</p >
     </section>
     <footer>
         <p>&copy; 2024 康晟达. 版权所有.</p >
-    </footer>
+    </section>
+    <footer>
     <script>
-      function calculatePrice() {
-    const weight = document.getElementById('weight').value;
-    const destination = document.getElementById('destination').value;
-    const method = document.getElementById('method').value;
-    let pricePerKg;
+        function calculatePrice() {
+            const weight = document.getElementById('weight').value;
+            const destination = document.getElementById('destination').value;
+            const warehouse = document.getElementById('warehouse').value;
+            const method = document.getElementById('method').value;
 
-    const pricingTable = {
-        美国: {
-            美森限时达快递派: 10, // 每公斤10美元
-            美森限时达卡派: 8,
-            美国海运EMC定提限时达海派: 9,
-            美国海运EMC定提限时达卡派: 8,
-            cosco快船定提海派: 8,
-            cosco快船定提卡派: 7
-        },
-        英国: {
-            英国海运包税:9,
-            英国海运不包税: 6.5
-        },
-        日本: {
-            日本海运固定税率: 10,
-            日本海运不包税逆算: 5
-        },
-        德国: {
-            欧洲空运: 1.1,
-            dhl: 1.4,
-            fedex: 1.9,
-            sea: 0.05,
-            air: 0.2,
-            land: 0.1
-        },
-        加拿大: {
-            美森限时达快递派: 1.4,
-            dhl: 1.6,
-            fedex: 2.2,
-            sea: 0.05,
-            air: 0.2,
-            land: 0.1
+            const pricingTable = {
+                usa: {
+                    warehouse1: {
+                        matson: 10,
+                        matson_card: 8,
+                        emc_sea: 8,
+                        emc_card: 10,
+                        cosco_sea: 7,
+                        cosco_card: 9,
+                        houston: 8,
+                        usa_air: 3
+                    },
+                    warehouse2: {
+                        matson: 1.1,
+                        matson_card: 1.3,
+                        emc_sea: 0.85,
+                        emc_card: 1.05,
+                        cosco_sea: 0.75,
+                        cosco_card: 0.95,
+                        houston: 0.9,
+                        usa_air: 2.1
+                    },
+                    warehouse3: {
+                        matson: 1.2,
+                        matson_card: 1.4,
+                        emc_sea: 0.9,
+                        emc_card: 1.1,
+                        cosco_sea: 0.8,
+                        cosco_card: 1.0,
+                        houston: 0.95,
+                        usa_air: 2.2
+                    }
+                },
+                  germany: {
+                    warehouse1: {
+                        matson: 1.3,
+                        matson_card: 1.5,
+                        emc_sea: 1.0,
+                        emc_card: 1.2,
+                        cosco_sea: 0.9,
+                        cosco_card: 1.1,
+                        houston: 0.95,
+                        europe_air: 2.2
+                    },
+                    warehouse2: {
+                        matson: 1.35,
+                        matson_card: 1.55,
+                        emc_sea: 1.05,
+                        emc_card: 1.25,
+                        cosco_sea: 0.95,
+                        cosco_card: 1.15,
+                        houston: 1.0,
+                        europe_air: 2.25
+                    },
+                    warehouse3: {
+                        matson: 1.4,
+                        matson_card: 1.6,
+                        emc_sea: 1.1,
+                        emc_card: 1.3,
+                        cosco_sea: 1.0,
+                        cosco_card: 1.2,
+                        houston: 1.05,
+                        europe_air: 2.3
+                    }
+                },
+                france: {
+                    warehouse1: {
+                        matson: 1.4,
+                        matson_card: 1.6,
+                        emc_sea: 1.1,
+                        emc_card: 1.3,
+                        cosco_sea: 1.0,
+                        cosco_card: 1.2,
+                        houston: 1.05,
+                        europe_air: 2.3
+                    },
+                    warehouse2: {
+                        matson: 1.45,
+                        matson_card: 1.65,
+                        emc_sea: 1.15,
+                        emc_card: 1.35,
+                        cosco_sea: 1.05,
+                        cosco_card: 1.25,
+                        houston: 1.1,
+                        europe_air: 2.35
+                    },
+                    warehouse3: {
+                        matson: 1.5,
+                        matson_card: 1.7,
+                        emc_sea: 1.2,
+                        emc_card: 1.4,
+                        cosco_sea: 1.1,
+                        cosco_card: 1.3,
+                        houston: 1.15,
+                        europe_air: 2.4
+                    }
+                },
+                spain: {
+                    warehouse1: {
+                        matson: 1.5,
+                        matson_card: 1.7,
+                        emc_sea: 1.2,
+                        emc_card: 1.4,
+                        cosco_sea: 1.1,
+                        cosco_card: 1.3,
+                        houston: 1.15,
+                        europe_air: 2.4
+                    },
+                    warehouse2: {
+                        matson: 1.55,
+                        matson_card: 1.75,
+                        emc_sea: 1.25,
+                        emc_card: 1.45,
+                        cosco_sea: 1.15,
+                        cosco_card: 1.35,
+                        houston: 1.2,
+                        europe_air: 2.45
+                    },
+                    warehouse3: {
+                        matson: 1.6,
+                        matson_card: 1.8,
+                        emc_sea: 1.3,
+                        emc_card: 1.5,
+                        cosco_sea: 1.2,
+                        cosco_card: 1.4,
+                        houston: 1.25,
+                        europe_air: 2.5
+                    }
+                },
+                canada: {
+                    warehouse5: {
+                        matson: 1.6,
+                        matson_card: 1.8,
+                        emc_sea: 1.3,
+                        emc_card: 1.5,
+                        cosco_sea: 1.2,
+                        cosco_card: 1.4,
+                        houston: 1.25,
+                        usa_air: 2.5
+                    },
+                    warehouse2: {
+                        matson: 1.65,
+                        matson_card: 1.85,
+                        emc_sea: 1.35,
+                        emc_card: 1.55,
+                        cosco_sea: 1.25,
+                        cosco_card: 1.45,
+                        houston: 1.3,
+                        usa_air: 2.55
+                    },
+                    warehouse3: {
+                        matson: 1.7,
+                        matson_card: 1.9,
+                        emc_sea: 1.4,
+                        emc_card: 1.6,
+                        cosco_sea: 1.3,
+                        cosco_card: 1.5,
+                        houston: 1.35,
+                        usa_air: 2.6
+                    }
+                },
+                japan: {
+                    warehouse6: {
+                        matson: 1.7,
+                        matson_card: 1.9,
+                        emc_sea: 1.4,
+                        emc_card: 1.6,
+                        cosco_sea: 1.3,
+                        cosco_card: 1.5,
+                        houston: 1.35,
+                        japan_fixed_tax: 2.6,
+                        japan_tax_not_included: 2.4
+                    },
+                    warehouse2: {
+                        matson: 1.75,
+                        matson_card: 1.95,
+                        emc_sea: 1.45,
+                        emc_card: 1.65,
+                        cosco_sea: 1.35,
+                        cosco_card: 1.55,
+                        houston: 1.4,
+                        japan_fixed_tax: 2.65,
+                        japan_tax_not_included: 2.45
+                    },
+                    warehouse3: {
+                        matson: 1.8,
+                        matson_card: 2.0,
+                        emc_sea: 1.5,
+                        emc_card: 1.7,
+                        cosco_sea: 1.4,
+                        cosco_card: 1.6,
+                        houston: 1.45,
+                        japan_fixed_tax: 2.7,
+                        japan_tax_not_included: 2.5
+                    }
+                },
+                uk: {
+                    warehouse1: {
+                        matson: 1.8,
+                        matson_card: 2.0,
+                        emc_sea: 1.5,
+                        emc_card: 1.7,
+                        cosco_sea: 1.4,
+                        cosco_card: 1.6,
+                        houston: 1.45,
+                     uk_tax_not_included: 2.5
+                    },
+                    warehouse2: {
+                        matson: 1.85,
+                        matson_card: 2.05,
+                        emc_sea: 1.55,
+                        emc_card: 1.75,
+                        cosco_sea: 1.45,
+                        cosco_card: 1.65,
+                        houston: 1.5,
+                        uk_tax_included: 2.75,
+                        uk_tax_not_included: 2.55
+                    },
+                    warehouse4: {
+                        matson: 1.9,
+                        matson_card: 2.1,
+                        emc_sea: 1.6,
+                        emc_card: 1.8,
+                        cosco_sea: 1.5,
+                        cosco_card: 1.7,
+                        houston: 1.55,
+                        uk_tax_included: 2.8,
+                        uk_tax_not_included: 2.6
+                    }
+                }
+            };
+
+            const pricePerKg = pricingTable[destination][warehouse][method];
+            const totalPrice = weight * pricePerKg;
+
+            document.getElementById('price').textContent = `总价格: $${totalPrice.toFixed(2)}`;
         }
-    };
-
-    pricePerKg = pricingTable[destination][method];
-    const price = weight * pricePerKg;
-    document.getElementById('price').innerText = `预计价格: $${price.toFixed(2)}`;
-}
 
         function trackShipment() {
             const trackingNumber = document.getElementById('trackingNumber').value;
-            const status = '您的货物正在运输中';
-            document.getElementById('trackingStatus').innerText = `追踪号码 ${trackingNumber}: ${status}`;
+            document.getElementById('trackingStatus').textContent = `正在查询追踪号码为 ${trackingNumber} 的货物状态...`;
+            // ISA；80762024985
+2024-05-28 15:33:37
+已签收
+2024-05-27 11:22:38
+已送仓，等待签收回传
+2024-05-24 22:25:50
+预约交仓时间为05/25号
+2024-05-23 19:40:57
+已提柜，拆柜预约派送中
+2024-05-23 14:12:43
+清关已放行，预约提柜中
+2024-05-22 18:33:26
+已到多伦多，清关中
+2024-05-16 18:03:34
+已上火车，预计05/24号到达多伦多
+已卸船，等待班列，预计3~7天左右上火车
+2024-05-14 16:59:21
+已卸船，等待班列，预计3~7天左右上火车
+2024-05-13 17:19:25
+已到港 等待卸船
+2024-04-26 21:34:56
+已开船，预计05/13号左右到温哥华港
+2024-04-23 23:03:04
+预计04/26号开船
+2024-04-20 12:51:58
+深圳集散中心 已收货
+2024-04-15 20:59:49
+已下单
         }
 
         function login() {
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
-            alert(`登录成功: ${email}`);
+            document.getElementById('loginForm').reset();
+            alert(`用户 ${email} 已登录`);
+            // 2024-05-14 19:24:40
+
+            2024-05-30 17:34:57
+ISA；80762024985
+2024-05-28 15:33:37
+已签收
+2024-05-27 11:22:38
+已送仓，等待签收回传
+2024-05-24 22:25:50
+预约交仓时间为05/25号
+2024-05-23 19:40:57
+已提柜，拆柜预约派送中
+2024-05-23 14:12:43
+清关已放行，预约提柜中
+2024-05-22 18:33:26
+已到多伦多，清关中
+2024-05-16 18:03:34
+已上火车，预计05/24号到达多伦多
+    已卸船，等待班列，预计3~7天左右上火车
+2024-05-14 16:59:21
+已卸船，等待班列，预计3~7天左右上火车
+2024-05-13 17:19:25
+已到港 等待卸船
+2024-04-26 21:34:56
+已开船，预计05/13号左右到温哥华港
+2024-04-23 23:03:04
+预计04/26号开船
+2024-04-20 12:51:58
+深圳集散中心 已收货
+2024-04-15 20:59:49
+已下单
         }
 
         function register() {
             const email = document.getElementById('registerEmail').value;
             const password = document.getElementById('registerPassword').value;
-            alert(`注册成功: ${email}`);
+            document.getElementById('registerForm').reset();
+            alert(`用户 ${email} 已注册`);
+            // 在这里添加实际的注册逻辑
         }
     </script>
 </body>
 </html>
-Commitdirectly to the main branch
