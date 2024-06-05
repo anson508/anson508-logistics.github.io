@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>跨境物流服务</title>
+    <title>深圳市康晟达国际物流有限公司</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -54,10 +54,51 @@
         }
     </style>
 </head>
+   <script>
+    function calculatePrice() {
+        const weight = document.getElementById('weight').value;
+        const distance = document.getElementById('distance').value;
+        const method = document.getElementById('method').value;
+        let pricePerKgPerKm;
+
+        switch (method) {
+            case 'sea':
+                pricePerKgPerKm = 12; // 美森限时达快递派每公斤美国的价格
+                break;
+            case 'air':
+               pricePerKgPerKm = 10; // 美森限时达卡派每公斤美国的价格
+                break;
+            case 'air':
+               pricePerKgPerKm = 12; // 美国海运EMC定提限时达海派每公斤美国的价格
+                break;
+            case 'air':
+               pricePerKgPerKm = 12; // 美国海运EMC定提限时达卡派每公斤美国的价格
+                break;
+            case 'air':
+               pricePerKgPerKm = 12; // cosco快船定提海派每公斤美国的价格
+                break;
+            case 'air':
+                 pricePerKgPerKm = 12; // cosco快船定提卡派每公斤美国的价格
+                break;
+            case 'air':
+                 pricePerKgPerKm = 12; // 美国休斯敦航线每公斤美国的价格
+                break;
+            case 'air':
+                pricePerKgPerKm = 0.2; // 美国空运每公斤每公里的价格
+                break;
+            case 'land':
+                pricePerKgPerKm = 0.1; // 欧洲空运每公斤每公里的价格
+                break;
+        }
+
+        const price = weight * distance * pricePerKgPerKm;
+        document.getElementById('price').innerText = `预计价格: $${price.toFixed(2)}`;
+    }
+</script> 
 <body>
     <header>
-        <h1>跨境物流服务</h1>
-        <p>为欧洲、美国、英国、加拿大和日本提供专业物流服务</p >
+        <h1>深圳市康晟达国际物流有限公司</h1>
+        <p>康晟达专注于为从中国出口到美国、欧洲、英国、加拿大、日本等国的贸易公司、工厂、亚马逊卖家等提供专业的物流供应链服务。我们的服务涵盖DDU（未付税前交货）和DDP（已付税前交货）等方案，确保货物的无缝运输和交付，优化整个运输流程，为尊贵的客户提供全面的解决方案。凭借在行业中的卓越承诺和专业知识，我们为客户提供可靠高效的物流服务，使企业能够自信轻松地进入国际市场。</p >
     </header>
     <nav>
         服务介绍
@@ -69,24 +110,30 @@
     <section id="services" class="container">
         <h2>服务介绍</h2>
         <h3>海运</h3>
-        <p>提供快速可靠的海运服务。</p >
+        <p>我们提供高效且可靠的海运服务，适用于大宗货物的跨国运输。我们海运服务覆盖全球多个主要港口，确保你的货物能否安全准时到达目的地</p >
         <h3>空运</h3>
         <p>快速的空运服务，适合紧急运输需求。</p >
         <h3>陆运</h3>
         <p>覆盖广泛的陆运服务，适用于短途和长途运输。</p >
     </section>
     <section id="calculator" class="container">
-        <h2>价格计算</h2>
-        <form>
-            <label for="weight">货物重量 (kg):</label>
-            <input type="number" id="weight" name="weight" required>
-            <label for="distance">运输距离 (km):</label>
-            <input type="number" id="distance" name="distance" required>
+    <h2>价格计算</h2>
+    <form>
+        <label for="weight">货物重量 (kg):</label>
+        <input type="number" id="weight" name="weight" required>
+        <label for="distance">国家:</label>
+     <input type="number" id="distance" name="distance" required>
             <label for="method">运输方式:</label>
             <select id="method" name="method" required>
-                <option value="sea">海运</option>
-                <option value="air">空运</option>
-                <option value="land">陆运</option>
+                <option value="sea">美森限时达快递派</option>
+                <option value="air">美森限时达卡派</option>
+                <option value="land">美国海运EMC定提限时达海派</option>
+                 <option value="land">美国海运EMC定提限时达卡派</option>
+                 <option value="land">cosco快船定提海派</option>
+                 <option value="land">cosco快船定提卡派</option>
+                 <option value="land">美国休斯敦航线</option>
+                <option value="land">美国空运</option>
+                <option value="land">欧洲空运</option>
             </select>
             <button type="button" onclick="calculatePrice()">计算价格</button>
         </form>
@@ -122,12 +169,12 @@
     </section>
     <section id="contact" class="container">
         <h2>联系我们</h2>
-        <p>电子邮件: support@logistics.com</p >
-        <p>电话: +123 456 7890</p >
-        <p>地址: 某某街道 123 号, 某某市, 某某国家</p >
+        <p>电子邮件: 18218209484@163.com</p >
+        <p>电话: +8618218209484</p >
+        <p>地址: 深圳市龙岗区坂田街道</p >
     </section>
     <footer>
-        <p>&copy; 2024 跨境物流服务. 版权所有.</p >
+        <p>&copy; 2024 康晟达. 版权所有.</p >
     </footer>
     <script>
         function calculatePrice() {
@@ -172,3 +219,4 @@
     </script>
 </body>
 </html>
+Commitdirectly to the main branch
