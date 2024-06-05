@@ -119,10 +119,22 @@
     <section id="calculator" class="container">
     <h2>价格计算</h2>
     <form>
+        <section id="calculator" class="container">
+    <h2>价格计算</h2>
+    <form>
         <label for="weight">货物重量 (kg):</label>
         <input type="number" id="weight" name="weight" required>
-        <label for="distance">国家:</label>
-     <input type="number" id="distance" name="distance" required>
+        <label for="destination">目的地国家:</label>
+        <select id="destination" name="destination" required>
+             <option value="sea">美国</option>
+             <option value="sea">德国</option>
+             <option value="sea">法国</option>
+             <option value="sea">西班牙</option>
+             <option value="sea">加拿大</option>
+             <option value="sea">日本</option>
+             <option value="sea">英国</option>
+                   </select>
+            <input type="number" id="distance" name="distance" required>
             <label for="method">运输方式:</label>
             <select id="method" name="method" required>
                 <option value="sea">美森限时达快递派</option>
@@ -134,6 +146,10 @@
                  <option value="land">美国休斯敦航线</option>
                 <option value="land">美国空运</option>
                 <option value="land">欧洲空运</option>
+                <option value="land">英国海运包税</option>
+                <option value="land">英国海运不包税</option>
+                 <option value="land">日本海运固定税率</option>
+                 <option value="land">日本海运不包税逆算</option>
             </select>
             <button type="button" onclick="calculatePrice()">计算价格</button>
         </form>
@@ -177,27 +193,51 @@
         <p>&copy; 2024 康晟达. 版权所有.</p >
     </footer>
     <script>
-        function calculatePrice() {
-            const weight = document.getElementById('weight').value;
-            const distance = document.getElementById('distance').value;
-            const method = document.getElementById('method').value;
-            let pricePerKgPerKm;
+      function calculatePrice() {
+    const weight = document.getElementById('weight').value;
+    const destination = document.getElementById('destination').value;
+    const method = document.getElementById('method').value;
+    let pricePerKg;
 
-            switch (method) {
-                case 'sea':
-                    pricePerKgPerKm = 0.05;
-                    break;
-                case 'air':
-                    pricePerKgPerKm = 0.2;
-                    break;
-                case 'land':
-                    pricePerKgPerKm = 0.1;
-                    break;
-            }
-
-            const price = weight * distance * pricePerKgPerKm;
-            document.getElementById('price').innerText = `预计价格: $${price.toFixed(2)}`;
+    const pricingTable = {
+        美国: {
+            美森限时达快递派: 10, // 每公斤10美元
+            美森限时达卡派: 8,
+            美国海运EMC定提限时达海派: 9,
+            美国海运EMC定提限时达卡派: 8,
+            cosco快船定提海派: 8,
+            cosco快船定提卡派: 7
+        },
+        英国: {
+            英国海运包税:9,
+            英国海运不包税: 6.5
+        },
+        日本: {
+            日本海运固定税率: 10,
+            日本海运不包税逆算: 5
+        },
+        德国: {
+            欧洲空运: 1.1,
+            dhl: 1.4,
+            fedex: 1.9,
+            sea: 0.05,
+            air: 0.2,
+            land: 0.1
+        },
+        加拿大: {
+            美森限时达快递派: 1.4,
+            dhl: 1.6,
+            fedex: 2.2,
+            sea: 0.05,
+            air: 0.2,
+            land: 0.1
         }
+    };
+
+    pricePerKg = pricingTable[destination][method];
+    const price = weight * pricePerKg;
+    document.getElementById('price').innerText = `预计价格: $${price.toFixed(2)}`;
+}
 
         function trackShipment() {
             const trackingNumber = document.getElementById('trackingNumber').value;
