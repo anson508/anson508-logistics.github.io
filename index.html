@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跨境物流服务</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+        }
+        nav a {
+            color: white;
+            padding: 1em;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        section {
+            padding: 2em;
+            background-color: white;
+            margin: 1em;
+        }
+        footer {
+            text-align: center;
+            padding: 1em;
+            background-color: #333;
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        form input, form select, form button {
+            display: block;
+            width: 100%;
+            margin: 0.5em 0;
+            padding: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>跨境物流服务</h1>
+        <p>为欧洲、美国、英国、加拿大和日本提供专业物流服务</p >
+    </header>
+    <nav>
+        服务介绍
+        价格计算
+        货物轨迹跟踪
+        用户登录/注册
+        联系我们
+    </nav>
+    <section id="services" class="container">
+        <h2>服务介绍</h2>
+        <h3>海运</h3>
+        <p>提供快速可靠的海运服务。</p >
+        <h3>空运</h3>
+        <p>快速的空运服务，适合紧急运输需求。</p >
+        <h3>陆运</h3>
+        <p>覆盖广泛的陆运服务，适用于短途和长途运输。</p >
+    </section>
+    <section id="calculator" class="container">
+        <h2>价格计算</h2>
+        <form>
+            <label for="weight">货物重量 (kg):</label>
+            <input type="number" id="weight" name="weight" required>
+            <label for="distance">运输距离 (km):</label>
+            <input type="number" id="distance" name="distance" required>
+            <label for="method">运输方式:</label>
+            <select id="method" name="method" required>
+                <option value="sea">海运</option>
+                <option value="air">空运</option>
+                <option value="land">陆运</option>
+            </select>
+            <button type="button" onclick="calculatePrice()">计算价格</button>
+        </form>
+        <p id="price"></p >
+    </section>
+    <section id="tracking" class="container">
+        <h2>货物轨迹跟踪</h2>
+        <form>
+            <label for="trackingNumber">追踪号码:</label>
+            <input type="text" id="trackingNumber" name="trackingNumber" required>
+            <button type="button" onclick="trackShipment()">查询货物状态</button>
+        </form>
+        <p id="trackingStatus"></p >
+    </section>
+    <section id="login" class="container">
+        <h2>用户登录/注册</h2>
+        <form id="loginForm">
+            <h3>登录</h3>
+            <label for="loginEmail">电子邮件:</label>
+            <input type="email" id="loginEmail" name="loginEmail" required>
+            <label for="loginPassword">密码:</label>
+            <input type="password" id="loginPassword" name="loginPassword" required>
+            <button type="button" onclick="login()">登录</button>
+        </form>
+        <form id="registerForm">
+            <h3>注册</h3>
+            <label for="registerEmail">电子邮件:</label>
+            <input type="email" id="registerEmail" name="registerEmail" required>
+            <label for="registerPassword">密码:</label>
+            <input type="password" id="registerPassword" name="registerPassword" required>
+            <button type="button" onclick="register()">注册</button>
+        </form>
+    </section>
+    <section id="contact" class="container">
+        <h2>联系我们</h2>
+        <p>电子邮件: support@logistics.com</p >
+        <p>电话: +123 456 7890</p >
+        <p>地址: 某某街道 123 号, 某某市, 某某国家</p >
+    </section>
+    <footer>
+        <p>&copy; 2024 跨境物流服务. 版权所有.</p >
+    </footer>
+    <script>
+        function calculatePrice() {
+            const weight = document.getElementById('weight').value;
+            const distance = document.getElementById('distance').value;
+            const method = document.getElementById('method').value;
+            let pricePerKgPerKm;
+
+            switch (method) {
+                case 'sea':
+                    pricePerKgPerKm = 0.05;
+                    break;
+                case 'air':
+                    pricePerKgPerKm = 0.2;
+                    break;
+                case 'land':
+                    pricePerKgPerKm = 0.1;
+                    break;
+            }
+
+            const price = weight * distance * pricePerKgPerKm;
+            document.getElementById('price').innerText = `预计价格: $${price.toFixed(2)}`;
+        }
+
+        function trackShipment() {
+            const trackingNumber = document.getElementById('trackingNumber').value;
+            const status = '您的货物正在运输中';
+            document.getElementById('trackingStatus').innerText = `追踪号码 ${trackingNumber}: ${status}`;
+        }
+
+        function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            alert(`登录成功: ${email}`);
+        }
+
+        function register() {
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            alert(`注册成功: ${email}`);
+        }
+    </script>
+</body>
+</html>
